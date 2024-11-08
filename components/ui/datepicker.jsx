@@ -18,7 +18,7 @@ export const DatePicker = () => {
         <Button
           variant={"default"}
           className={cn(
-            "justify-start text-left font-normal bg-card hover:bg-card border w-full h-12 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+            "justify-start text-left font-normal bg-black hover:bg-black border w-full h-12 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
             !date && "text-muted-foreground"
           )}
         >

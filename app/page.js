@@ -243,7 +243,7 @@ export default function EventPlannerWebsite() {
               animate={formControls}
             >
             <div className="max-w-2xl mx-auto">
-              <Card className="max-w-lg mx-auto selection:bg-transparent">
+              <Card className="max-w-lg mx-auto bg-black selection:bg-transparent">
                 <CardHeader>
                   <CardTitle className="text-4xl mb-4 text-center">
                     Book Your Event
@@ -275,7 +275,7 @@ export default function EventPlannerWebsite() {
                       </div>
                       <div className="flex flex-col space-y-1.5">
                         <Select>
-                          <SelectTrigger className="w-full h-12">
+                          <SelectTrigger className="w-full h-12 focus:border-pink-700">
                             <SelectValue placeholder="Event" />
                           </SelectTrigger>
                           <SelectContent>
@@ -316,6 +316,8 @@ export default function EventPlannerWebsite() {
             </motion.div>
           </div>
         </section>
+
+        {/* FAQ Section */}
         <section className="py-20 px-8">
           <motion.div
             ref={sectionRef}
