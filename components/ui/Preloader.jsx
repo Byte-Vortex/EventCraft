@@ -33,8 +33,8 @@ const icons=['🎨', '🎭', '🎉', '🎸', '📸']
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <div className="text-center">
-            <h2 className="font-dancingScript text-3xl font-bold text-primary mb-2">EventCraft</h2>
-            <p className="text-muted-foreground text-base">Crafting your experience...</p>
+            <h2 className="font-dancingScript text-5xl font-bold text-primary mb-2">EventCraft</h2>
+            <p className="text-muted-foreground font-dancingScript text-xl py-1">Crafting your experience...</p>
           </div>
         </motion.div>
       </div>
@@ -52,7 +52,7 @@ const icons=['🎨', '🎭', '🎉', '🎸', '📸']
               className="text-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1 + index * 0.1, duration: 0.4 }}
+              transition={{ delay: 1.4 + index * 0.1, duration: 0.8}}
             >
               {emoji}
             </motion.span>

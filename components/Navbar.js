@@ -31,18 +31,19 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="top-0 sticky backdrop-blur selection:bg-transparent z-50">
+    <nav className="top-0 sticky backdrop-blur selection:bg-transparent z-50 font-poppins text-white">
       <div className="mx-auto px-4 py-2 flex  justify-between items-center">
-        <Link href="/" className="hidden md:flex ml-10 text-2xl font-bold text-white">
+        <Link href="/" className="hidden font-dancingScript md:flex ml-10 text-3xl font-bold ">
           EventCraft
         </Link>
-        <Link href="/" className="md:hidden text-2xl font-bold text-white">
+        <Link href="/" className="md:hidden font-dancingScript text-3xl font-bold">
           EventCraft
         </Link>
         <div className="hidden md:flex mr-4 space-x-8 items-center" id="nav-links">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
+              <Link href="/services" >
                 <NavigationMenuTrigger className="text-base font-bold transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5">
                   Services
                 </NavigationMenuTrigger>
@@ -68,7 +69,7 @@ export default function Navbar() {
                       <NavigationMenuLink asChild>
                         <Link
                           className={cn(LinkStyle())}
-                          href="/services/tatoo-artists"
+                          href="/services/tattoo-artists"
                         >
                           <div className="text-sm font-medium leading-none">
                             Tattoo Artists
@@ -111,6 +112,7 @@ export default function Navbar() {
                     </li>
                   </ul>
                 </NavigationMenuContent>
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/packages" legacyBehavior passHref>
@@ -158,7 +160,7 @@ export default function Navbar() {
             <SheetContent className="bg-background selection:bg-transparent ">
               <SheetHeader className="flex justify-center mt-8 mb-2 items-center text-3xl">
                 <div className="flex items-center space-x-2">
-                  <span className="font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600">EventCraft</span>
+                  <span className="font-bold text-5xl bg-clip-text text-transparent font-dancingScript bg-gradient-to-b from-purple-400 to-pink-600 py-1">EventCraft</span>
                 </div>
               </SheetHeader>
 

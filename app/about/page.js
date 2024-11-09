@@ -12,7 +12,7 @@ export default function AboutUs() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="py-20">
+      <main className="py-10">
         <div className="container mx-auto px-4">
           
         <motion.div
@@ -20,11 +20,11 @@ export default function AboutUs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center"
-          ><h1 className="text-4xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+          ><h1 className="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             About EventCraft
           </h1>
           </motion.div>
-          <div className="max-w-3xl mx-auto py-16">
+          <div className="max-w-3xl mx-auto py-14">
             <p className="text-lg mb-6 text-justify">
               EventCraft is a premier event planning company specializing in creating unique and unforgettable
               experiences. We combine the talents of tattoo artists, game designers, and sketch artists to bring a new
@@ -40,7 +40,7 @@ export default function AboutUs() {
               touch becomes a cherished memory for all involved.
             </p>
           </div>
-          <h2 className="text-4xl font-bold py-16 text-center">Meet Our Team</h2>
+          <h2 className="text-4xl font-bold py-8 text-center">Meet Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
             {teamMembers.map((member, index) => (
               <Card className="p-4" key={index}>

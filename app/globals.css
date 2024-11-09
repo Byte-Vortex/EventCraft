@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif,dancing-script;
+  font-family: Arial, Helvetica, sans-serif,dancing-script,poppins;
 }
 
 @layer base {
@@ -73,4 +73,9 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+* {
+  scrollbar-width:none;
+  scrollbar-color: #db2777 #b91c1c;
 }

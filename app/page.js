@@ -19,29 +19,47 @@ import { cva } from "class-variance-authority";
 import FAQsection from "@/components/FAQsection";
 import BookingSection from "@/components/BookingSection";
 import TextBanner from "@/components/ui/TextBanner";
+import Link from "next/link";
+import { TestimonialCarousel } from "@/components/TestimonialsCarousel";
+import { delay } from "framer-motion";
 
- // Card Data Array
- const cardData = [
+// Card Data Array
+const cardData = [
   {
     imgSrc: "/1.jpg",
     title: "Tattoo Artists",
     description: "Professional event tattoos",
-    content: "Our skilled tattoo artists bring a unique flair to your event, offering custom designs and temporary tattoos.",
-    animationVariant: { hidden: { opacity: 0, y: -50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } },
+    content:
+      "Our skilled tattoo artists bring a unique flair to your event, offering custom designs and temporary tattoos.",
+    animationVariant: {
+      hidden: { opacity: 0, y: -50 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    },
+    link: "/services/tattoo-artists",
   },
   {
     imgSrc: "/2.jpg",
     title: "Interactive Games",
     description: "Engaging entertainment for all",
-    content: "From high-tech VR experiences to classic party games, we have something for everyone to enjoy.",
-    animationVariant: { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } },
+    content:
+      "From high-tech VR experiences to classic party games, we have something for everyone to enjoy.",
+    animationVariant: {
+      hidden: { opacity: 0, y: 50 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    },
+    link: "/services/games",
   },
   {
     imgSrc: "/3.jpg",
     title: "Sketch Artists",
     description: "Capture moments in art",
-    content: "Our talented sketch artists create beautiful, on-the-spot portraits and caricatures for your guests.",
-    animationVariant: { hidden: { opacity: 0, y: -50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } },
+    content:
+      "Our talented sketch artists create beautiful, on-the-spot portraits and caricatures for your guests.",
+    animationVariant: {
+      hidden: { opacity: 0, y: -50 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    },
+    link: "/services/sketch-artists",
   },
 ];
 
@@ -51,27 +69,36 @@ const DescriptionStyle = cva("text-center text-base ");
 // AnimatedCard Component
 const AnimatedCard = ({ card }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.7, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.4, triggerOnce: true });
 
   useEffect(() => {
     if (inView) controls.start("visible");
   }, [controls, inView]);
 
   return (
-    <motion.div ref={ref} variants={card.animationVariant} initial="hidden" animate={controls}>
-      <Card className="h-[50vh]">
+    <motion.div
+      ref={ref}
+      variants={card.animationVariant}
+      initial="hidden"
+      animate={controls}
+    >
+      <Card className="h-auto">
         <CardHeader>
           <CardTitle className={cn(TitleStyle())}>{card.title}</CardTitle>
-          <CardDescription className={cn(DescriptionStyle())}>{card.description}</CardDescription>
+          <CardDescription className={cn(DescriptionStyle())}>
+            {card.description}
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <Image
-            src={card.imgSrc}
-            alt={card.title}
-            height="200"
-            width="400"
-            className="w-full h-48 object-cover rounded-md mb-4"
-          />
+          <Link href={card.link}>
+            <Image
+              src={card.imgSrc}
+              alt={card.title}
+              height="200"
+              width="400"
+              className="w-full h-48 object-cover rounded-md mb-4"
+            />
+          </Link>
           <p className="text-muted-foreground">{card.content}</p>
         </CardContent>
       </Card>
@@ -79,25 +106,27 @@ const AnimatedCard = ({ card }) => {
   );
 };
 
-export default function EventPlannerWebsite(){
+export default function EventPlannerWebsite() {
   // Section Animation
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 1, triggerOnce: true });
-  useEffect(() => { if (inView) controls.start("visible"); }, [controls, inView]);
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [controls, inView]);
 
   const titleVariants = {
     hidden: { opacity: 0, y: -30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6,delay:0.7 } },
   };
   const bannerMessages = [
     "🎉 Special offer: 20% off all packages booked this month!",
-    "🎨 New service: Glow-in-the-dark body painting now available!",
+    "🎨 New service: Glow-in-the-dark hand painting now available!",
     "🎮 Introducing VR gaming experiences for your events!",
     "📅 Limited slots available for summer events - Book now!",
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground ">
       <main>
         {/* Hero Section */}
         <section className="-mt-20 bg-gradient-to-b from-background to-background/80 selection:bg-transparent">
@@ -109,15 +138,27 @@ export default function EventPlannerWebsite(){
               transition={{ duration: 0.7 }}
               className="text-center"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600">
+              <h1 className="text-5xl md:text-6xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600 px-2 py-3">
                 Craft Unforgettable Events
               </h1>
+
               <p className="text-xl mb-8 text-white">
-                Elevate your gatherings with our unique blend of entertainment and artistry
+                Elevate your gatherings with our unique blend of entertainment
+                and artistry
               </p>
-              <Button size="lg" variant="default" className="font-bold text-sm rounded-sm bg-primary text-primary-foreground pointer-events-auto">
+              <motion.div
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7,delay:0.9 }}
+              className="text-center"
+            >
+              <Button
+                size="lg"
+                variant="default"
+                className="font-bold text-sm rounded-sm bg-primary text-primary-foreground pointer-events-auto"
+              >
                 Book Now
-              </Button>
+              </Button></motion.div>
             </motion.div>
           </div>
         </section>
@@ -125,8 +166,15 @@ export default function EventPlannerWebsite(){
         {/* Our Services Section */}
         <section className="py-20 w-full">
           <div className="container mx-auto w-full">
-            <motion.div ref={ref} variants={titleVariants} initial="hidden" animate={controls}>
-              <h2 className="text-4xl font-bold mb-12 text-center">Our Services</h2>
+            <motion.div
+              ref={ref}
+              variants={titleVariants}
+              initial="hidden"
+              animate={controls}
+            >
+              <h2 className="text-4xl font-bold mb-12 text-center">
+                Our Services
+              </h2>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {cardData.map((card, index) => (
@@ -138,11 +186,11 @@ export default function EventPlannerWebsite(){
 
         {/*Booking Section*/}
         <BookingSection />
-              <TextBanner messages={bannerMessages}/>
+        <TextBanner messages={bannerMessages} />
+        <TestimonialCarousel />
         {/*FAQ Section*/}
         <FAQsection />
       </main>
     </div>
   );
-};
-
+}

@@ -12,20 +12,20 @@ import { motion, useAnimation } from "framer-motion";
 export default function FAQsection() {
   const sectionControls = useAnimation();
   const [sectionRef, sectionInView] = useInView({
-    threshold: 0.5,
+    threshold: 0.3,
     triggerOnce: true,
   });
   useEffect(() => {
     if (sectionInView) sectionControls.start("visible");
   }, [sectionControls, sectionInView]);
   const sectionVariants = {
-    hidden: { opacity: 0, y: 100 },
+    hidden: { opacity: 0, y: 80 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
   return (
     <div className="text-foreground ">
       {/* FAQ Section */}
-      <section className="py-20 px-8">
+      <section className="py-10 px-8">
         <motion.div
           ref={sectionRef}
           variants={sectionVariants}

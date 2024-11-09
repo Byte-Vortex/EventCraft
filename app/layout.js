@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Dancing_Script } from "next/font/google";
+import { Dancing_Script, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
@@ -26,6 +26,12 @@ const dancingScript = Dancing_Script({
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "EventCraft",
   description:
@@ -43,8 +49,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable}${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${dancingScript.variable} ${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -54,7 +59,7 @@ export default function RootLayout({ children }) {
           <PageWrapper>
             <div className="flex flex-col min-h-screen">
               <Navbar />
-              <main className="flex-grow">
+              <main className="flex-grow font-poppins">
                 {children}
                 <Toaster />
               </main>
