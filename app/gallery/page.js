@@ -13,18 +13,24 @@ export default function Gallery() {
 
   return (
     <div className="bg-background text-foreground">
-      <main className="pt-14">
-        <div className="container mx-auto px-4">
+      <main className="pt-8">
+        <div className="container mx-auto px-4 py-4">
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center"
-          ><h1 className="text-4xl md:text-6xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+          ><h1 className="text-4xl md:text-6xl font-bold  mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             Event Gallery
           </h1>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5,delay:0.5 }}
+            className="text-center"
+          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-3">
             {galleryItems.map((item, index) => (
               <div key={index} className="relative group">
                 <Image
@@ -40,6 +46,7 @@ export default function Gallery() {
               </div>
             ))}
           </div>
+          </motion.div>
         </div>
       </main>
     </div>

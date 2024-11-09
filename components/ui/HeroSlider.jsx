@@ -46,10 +46,6 @@ export default function HeroSlider() {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1))
   }, [])
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index)
-  }
-
   // Handle touch start
   const handleTouchStart = (e) => {
     setTouchStartX(e.touches[0].clientX)
@@ -117,7 +113,8 @@ export default function HeroSlider() {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide, index) => (
-          <div key={index} className="min-w-full h-full relative overflow-x-hidden">
+          <div key={index} className="min-w-full h-full relative overflow-x-hidden bg-muted">
+                     
             <Image
               src={slide.url}
               alt={slide.alt}

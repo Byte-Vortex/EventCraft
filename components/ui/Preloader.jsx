@@ -33,7 +33,7 @@ const icons=['🎨', '🎭', '🎉', '🎸', '📸']
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-primary mb-2">EventCraft</h2>
+            <h2 className="font-dancingScript text-3xl font-bold text-primary mb-2">EventCraft</h2>
             <p className="text-muted-foreground text-base">Crafting your experience...</p>
           </div>
         </motion.div>

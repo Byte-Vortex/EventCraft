@@ -3,7 +3,6 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTrigger,
@@ -18,12 +17,15 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { cva } from "class-variance-authority";
+import { ModeToggle } from "./Theme-btn";
 
 export default function Navbar() {
   const NavStyle = cva(
     "text-base font-bold group inline-flex h-10 w-max items-center justify-center px-4 py-2 transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5  disabled:pointer-events-none disabled:opacity-50"
   );
-
+  const NavmdStyle = cva(
+    "text-base font-bold group inline-flex h-10 w-max items-center justify-center px-4 py-2 disabled:pointer-events-none disabled:opacity-50"
+  );
   const LinkStyle = cva(
     "  block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
   );
@@ -41,7 +43,7 @@ export default function Navbar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-base font-bold">
+                <NavigationMenuTrigger className="text-base font-bold transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5">
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -133,6 +135,7 @@ export default function Navbar() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          <ModeToggle/>
         </div>
         <div className="md:hidden ">
           <Sheet>
@@ -155,35 +158,44 @@ export default function Navbar() {
             <SheetContent className="bg-background selection:bg-transparent ">
               <SheetHeader className="flex justify-center mt-8 mb-2 items-center text-3xl">
                 <div className="flex items-center space-x-2">
-                  <span className="font-bold text-2xl">EventCraft</span>
+                  <span className="font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600">EventCraft</span>
                 </div>
               </SheetHeader>
 
               <div className="flex flex-col justify-center mt-6 items-center">
-                <Link
-                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
-                  href="/"
-                >
-                  Home
+              <NavigationMenu className="mb-8">
+            <NavigationMenuList className="flex flex-col space-y-2 justify-center items-center">
+              <NavigationMenuItem>
+                <Link href="/services" legacyBehavior passHref>
+                  <NavigationMenuLink className={cn(NavmdStyle())}>
+                    Services
+                  </NavigationMenuLink>
                 </Link>
-                <Link
-                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
-                  href="/about"
-                >
-                  About
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/packages" legacyBehavior passHref>
+                  <NavigationMenuLink className={cn(NavmdStyle())}>
+                    Packages
+                  </NavigationMenuLink>
                 </Link>
-                <Link
-                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
-                  href="/projects"
-                >
-                  Projects
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/gallery" legacyBehavior passHref>
+                  <NavigationMenuLink className={cn(NavmdStyle())}>
+                    Gallery
+                  </NavigationMenuLink>
                 </Link>
-                <Link
-                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
-                  href="/contact"
-                >
-                  Contact
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/about" legacyBehavior passHref>
+                  <NavigationMenuLink className={cn(NavmdStyle())}>
+                    About Us
+                  </NavigationMenuLink>
                 </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <ModeToggle />
               </div>
               <div className="flex flex-col justify-center items-center py-2 mb-2 mt-6"></div>
               <SheetFooter>

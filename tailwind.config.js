@@ -78,6 +78,11 @@ module.exports = {
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
-  },
+  }, fontFamily: {
+	dancingScript: ['var(--font-dancing-script)'],
+	geistSans: ['var(--font-geist-sans)'],
+	geistMono: ['var(--font-geist-mono)'],
+  }
+,  
   plugins: [require("tailwindcss-animate")],
 };
