@@ -34,10 +34,24 @@ const testimonials = [
     rating: 5,
   },
   {
+    name: "Michael Chen",
+    role: "Corporate Event Planner",
+    content:
+      "The interactive games provided by EventCraft kept our team engaged and entertained throughout the entire company retreat.",
+    rating: 4,
+  },
+  {
     name: "Sarah Johnson",
     role: "Bride",
     content:
       "EventCraft made our wedding day absolutely magical! The tattoo artists and sketch artists were a huge hit with our guests.",
+    rating: 5,
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Birthday Girl",
+    content:
+      "My 30th birthday party was unforgettable thanks to EventCraft. The custom decor and entertainment were perfect!",
     rating: 5,
   },
   {
@@ -46,6 +60,13 @@ const testimonials = [
     content:
       "EventCraft made our wedding day absolutely magical! The tattoo artists and sketch artists were a huge hit with our guests.",
     rating: 4,
+  },
+  {
+    name: "Aasish",
+    role: "Birthday Boy",
+    content:
+      "My 25th birthday party was unforgettable thanks to EventCraft. The custom decor and entertainment were perfect!",
+    rating: 5,
   },
 ];
 
@@ -105,8 +126,8 @@ export function TestimonialCarousel() {
                   <div className="p-1">
                     <Card className="bg-transparent shadow-neutral-950">
                       <CardContent className="flex flex-col items-center justify-center p-6">
-                        <p className="font-bold text-lg">{testimonial.name}</p>
-                        <p className="text-sm pt-2 font-semibold text-muted-foreground">
+                        <p className="font-bold font-greatVibes text-3xl">{testimonial.name}</p>
+                        <p className="text-base pt-2 font-semibold text-muted-foreground">
                           {testimonial.role}
                         </p>
                         <p className="text-center mt-4">

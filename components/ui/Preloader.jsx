@@ -7,7 +7,7 @@ export default function Preloader() {
 const icons=['🎨', '🎭', '🎉', '🎸', '📸']
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
-      <div className="relative w-72 h-72">
+      <div className="relative w-80 h-80">
         <motion.div
           className="absolute inset-0 border-4 border-primary rounded-full"
           initial={{ scale: 0, rotate: 0 }}
@@ -34,11 +34,11 @@ const icons=['🎨', '🎭', '🎉', '🎸', '📸']
         >
           <div className="text-center">
             <h2 className="font-meddon text-4xl font-bold text-primary mb-2">EventCraft</h2>
-            <p className="text-muted-foreground font-dancingScript text-xl py-1">Crafting your experience...</p>
+            <p className="text-muted-foreground font-dancingScript font-bold text-2xl py-2">Crafting Your Experiences...</p>
           </div>
         </motion.div>
       </div>
-      <div className="absolute bottom-56 left-0 right-0 flex justify-center">
+      <div className="absolute bottom-40 left-0 right-0 flex justify-center">
         <motion.div
           className="flex space-x-2"
           initial={{ opacity: 0, y: 20 }}

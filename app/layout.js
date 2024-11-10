@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Dancing_Script, Poppins,Meddon } from "next/font/google";
+import { Dancing_Script, Poppins,Meddon,Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
@@ -23,6 +23,12 @@ const geistMono = localFont({
 const dancingScript = Dancing_Script({
   variable: "--font-dancing-script",
   weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
+const greatVibes = Great_Vibes({
+  variable: "--font-great-vibes",
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -55,7 +61,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable} ${poppins.variable} ${meddon.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
+        className={`${dancingScript.variable} ${greatVibes.variable} ${poppins.variable} ${meddon.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

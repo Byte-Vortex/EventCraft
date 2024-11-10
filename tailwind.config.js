@@ -83,7 +83,8 @@ module.exports = {
 		geistSans: ['var(--font-geist-sans)'],
 		geistMono: ['var(--font-geist-mono)'],
 		poppins:['var(--font-poppins)'],
-		meddon:['var(--font-meddon)']
+		meddon:['var(--font-meddon)'],
+		greatVibes:['var(--font-great-vibes)']
 	  }
 	},
 	plugins: [
