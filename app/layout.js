@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Dancing_Script, Poppins } from "next/font/google";
+import { Dancing_Script, Poppins,Meddon } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
@@ -32,6 +32,12 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
+const meddon = Meddon({
+  variable: "--font-meddon",
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "EventCraft",
   description:
@@ -49,7 +55,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable} ${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
+        className={`${dancingScript.variable} ${poppins.variable} ${meddon.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
