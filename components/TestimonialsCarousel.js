@@ -95,7 +95,7 @@ export function TestimonialCarousel() {
             opts={{
               align: "start",
             }}
-            className="w-full max-w-xl sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto px-4  selection:bg-transparent overflow-x-hidden transition-none"
+            className="w-full max-w-xl sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto px-4  selection:bg-transparent overflow-x-hidden transition-shadow"
           >
             <CarouselContent className="flex">
               {testimonials.map((testimonial, index) => (
@@ -103,7 +103,7 @@ export function TestimonialCarousel() {
                   {" "}
                   {/* Ensures one item is shown at a time */}
                   <div className="p-1">
-                    <Card className="bg-transparent shadow-background">
+                    <Card className="bg-transparent shadow-neutral-950">
                       <CardContent className="flex flex-col items-center justify-center p-6">
                         <p className="font-bold text-lg">{testimonial.name}</p>
                         <p className="text-sm pt-2 font-semibold text-muted-foreground">

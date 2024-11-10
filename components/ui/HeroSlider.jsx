@@ -2,9 +2,7 @@
 
 import * as React from 'react'
 import Image from 'next/image'
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const slides = [
@@ -95,10 +93,28 @@ export default function HeroSlider() {
     }
   }
 
+  // Cleanup event listeners for mouse up (in case the user moves out of the component)
+  React.useEffect(() => {
+    const handleMouseUp = () => setIsDragging(false);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => window.removeEventListener('mouseup', handleMouseUp);
+  }, []);
+
+  // Auto-slide functionality
   React.useEffect(() => {
     const slideInterval = setInterval(nextSlide, 3000)
     return () => clearInterval(slideInterval)
   }, [nextSlide])
+
+  // Keyboard navigation (left/right arrow keys)
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [nextSlide, prevSlide]);
 
   return (
     <>
@@ -124,6 +140,7 @@ export default function HeroSlider() {
               src={slide.url}
               alt={slide.alt}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{ objectFit: 'cover' }}
               priority={index === 0}
             />
