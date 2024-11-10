@@ -176,41 +176,31 @@ export default function Navbar() {
                   </div>
                 </Link>
               </SheetHeader>
-
               <div className="flex flex-col justify-center mt-6 items-center">
-                <NavigationMenu className="mb-8">
-                  <NavigationMenuList className="flex flex-col space-y-2 justify-center items-center">
-                    <NavigationMenuItem>
-                      <Link href="/services" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(NavmdStyle())}>
-                          Services
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link href="/packages" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(NavmdStyle())}>
-                          Packages
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link href="/gallery" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(NavmdStyle())}>
-                          Gallery
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link href="/about" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(NavmdStyle())}>
-                          About Us
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuItem>
-                  </NavigationMenuList>
-                </NavigationMenu>
-                {/* <ModeToggle /> */}
+                <Link
+                  className="block font-bold text-1xl py-2 px"
+                  href="/services"
+                >
+                  Services
+                </Link>
+                <Link
+                  className="block font-bold text-1xl py-2 px-4"
+                  href="/packages"
+                >
+                  Packages
+                </Link>
+                <Link
+                  className="block font-bold text-1xl py-2 px-4"
+                  href="/gallery"
+                >
+                  Gallery
+                </Link>
+                <Link
+                  className="block font-bold text-1xl py-2 px-4"
+                  href="/about"
+                >
+                  About Us
+                </Link>
               </div>
               <div className="flex flex-col justify-center items-center py-2 mb-2 mt-6"></div>
               <SheetFooter>
@@ -247,6 +237,102 @@ export default function Navbar() {
           </Sheet>
         </div>
       </div>
+
+      {/*
+        <div className="md:hidden ">
+          <Sheet>
+            <SheetTrigger>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </SheetTrigger>
+            <SheetContent className="bg-background selection:bg-transparent ">
+              <SheetHeader className="flex justify-center mt-8 mb-2 items-center text-3xl">
+                <div className="flex items-center space-x-2">
+                  <Image
+                    src="/Bytevortex.png"
+                    alt="Logo"
+                    width={25}
+                    height={25}
+                  ></Image>
+                  <span className="font-bold text-xl">ByteVortex</span>
+                </div>
+              </SheetHeader>
+
+              <div className="flex flex-col justify-center mt-6 items-center">
+                <Link
+                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
+                  href="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
+                  href="/about"
+                >
+                  About
+                </Link>
+                <Link
+                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
+                  href="/projects"
+                >
+                  Projects
+                </Link>
+                <Link
+                  className="block font-bold text-1xl py-2 px-4 hover:scale-105 transition-transform duration-300"
+                  href="/contact"
+                >
+                  Contact
+                </Link>
+              </div>
+              <div className="flex flex-col justify-center items-center py-2 mb-2 mt-6">
+                <ModeToggle></ModeToggle>
+              </div>
+              <SheetFooter>
+                <div className="mx-auto mt-64 py-4 justify-center items-center">
+                  <p className="text-sm justify-center text-center">
+                    &copy; 2024 ByteVortex. All rights reserved.
+                  </p>
+                  <div className="flex items-center justify-center space-x-8 py-8">
+                    <a
+                      href="https://github.com/Byte-Vortex"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="h-5 w-5" />
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/bytevortex/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                    <a
+                      href="https://x.com/Byte_Vortex"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Twitter className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div> */}
     </nav>
   );
 }
