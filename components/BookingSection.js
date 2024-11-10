@@ -22,7 +22,6 @@ import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-import { Label } from "./ui/label";
 
 export default function BookingSection() {
     const formControls = useAnimation();
@@ -82,7 +81,7 @@ export default function BookingSection() {
                           <SelectTrigger className="w-full h-12 focus:border-pink-700">
                             <SelectValue placeholder="Event"></SelectValue>
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="absolute z-50 bg-background">
                             <SelectItem value="birthday">Birthday</SelectItem>
                             <SelectItem value="party">Party</SelectItem>
                             <SelectItem value="anniversary">

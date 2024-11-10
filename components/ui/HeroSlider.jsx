@@ -2,6 +2,10 @@
 
 import * as React from 'react'
 import Image from 'next/image'
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const slides = [
   {
@@ -97,15 +101,17 @@ export default function HeroSlider() {
   }, [nextSlide])
 
   return (
+    <>
+    <section className="-mt-20 bg-gradient-to-b from-background to-background/80 selection:bg-transparent">
     <div
-      className="relative h-[calc(80vh)] w-full overflow-hidden "
+      className="relative h-[calc(80vh)] w-full overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
-      onMouseLeave={() => setIsDragging(false)} // Stop dragging if the mouse leaves the slider
+      onMouseLeave={() => setIsDragging(false)}
     >
       {/* Slides */}
       <div
@@ -114,7 +120,6 @@ export default function HeroSlider() {
       >
         {slides.map((slide, index) => (
           <div key={index} className="min-w-full h-full relative overflow-x-hidden bg-muted">
-                     
             <Image
               src={slide.url}
               alt={slide.alt}
@@ -126,6 +131,41 @@ export default function HeroSlider() {
           </div>
         ))}
       </div>
+
+      {/* Overlay Content */}
+      <div className="absolute px-2 inset-0 flex items-center justify-center mx-auto pointer-events-none overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center"
+        >
+          <h1 className="text-5xl md:text-6xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600 px-2 py-3">
+            Craft Unforgettable Events
+          </h1>
+
+          <p className="text-xl mb-8 text-white">
+            Elevate your gatherings with our unique blend of entertainment and artistry
+          </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9 }}
+            className="text-center"
+          >
+            <Button
+              size="lg"
+              variant="default"
+              className="font-bold text-sm rounded-sm bg-primary text-primary-foreground pointer-events-auto"
+            >
+              Book Now
+            </Button>
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
+    </section>
+    </>
   )
 }
