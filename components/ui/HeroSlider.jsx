@@ -130,7 +130,7 @@ export default function HeroSlider() {
         >
           {/* Slides */}
           <div
-            className="h-full w-full flex transition-transform duration-500 ease-out"
+            className="flex h-full w-full transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {slides.map((slide, index) => (
@@ -147,7 +147,6 @@ export default function HeroSlider() {
               </div>
             ))}
           </div>
-
           {/* Overlay Content */}
           <div className="absolute px-2 inset-0 flex items-center justify-center mx-auto pointer-events-none overflow-hidden">
             <motion.div

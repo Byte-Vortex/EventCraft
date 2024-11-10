@@ -23,7 +23,9 @@ export default function EventPlannerWebsite() {
         <OurServicesSection />
         {/*Booking Section*/}
         <BookingSection />
+        {/*Text Banner*/}
         <TextBanner messages={bannerMessages} />
+        {/*Testimonial Carousel*/}
         <TestimonialCarousel />
         {/*FAQ Section*/}
         <FAQsection />
