@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable} ${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased `}>
+        className={`${dancingScript.variable} ${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

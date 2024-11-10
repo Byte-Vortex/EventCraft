@@ -137,7 +137,7 @@ export default function Navbar() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <ModeToggle/>
+          {/* <ModeToggle/> */}
         </div>
         <div className="md:hidden ">
           <Sheet>
@@ -197,7 +197,7 @@ export default function Navbar() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <ModeToggle />
+          {/* <ModeToggle /> */}
               </div>
               <div className="flex flex-col justify-center items-center py-2 mb-2 mt-6"></div>
               <SheetFooter>
