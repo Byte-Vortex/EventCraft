@@ -20,7 +20,7 @@ export default function EventPlannerWebsite() {
         {/* Hero Section */}
         <HeroSlider />
         {/* Our Services Section */}
-        <OurServicesSection />
+        <OurServicesSection  className="p-2" />
         {/*Booking Section*/}
         <BookingSection />
         {/*Text Banner*/}

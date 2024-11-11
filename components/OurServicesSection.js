@@ -113,7 +113,7 @@ export default function OurServicesSection() {
     <div>
       {/* Our Services Section */}
       <section className="py-20 w-full">
-        <div className="container mx-auto w-full">
+        <div className="container mx-auto w-full px-7">
           <motion.div
             ref={ref}
             variants={titleVariants}

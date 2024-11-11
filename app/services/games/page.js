@@ -12,7 +12,7 @@ export default function Games() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="py-10">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             Interactive Games
           </h1>

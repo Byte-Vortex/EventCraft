@@ -37,7 +37,7 @@ export default function BookingSection() {
   return (
     <div>
       {/* Booking Section */}
-      <section className="py-20 bg-muted/50" id="bookingsection">
+      <section className="py-20 bg-muted/50 px-7" id="bookingsection">
         <div className="container mx-auto">
           <motion.div
             ref={formRef}

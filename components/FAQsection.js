@@ -26,7 +26,7 @@ export default function FAQsection() {
   return (
     <div className="text-foreground ">
       {/* FAQ Section */}
-      <section className="py-10 px-8">
+      <section className="py-10 px-7">
         <motion.div
           ref={sectionRef}
           variants={sectionVariants}
