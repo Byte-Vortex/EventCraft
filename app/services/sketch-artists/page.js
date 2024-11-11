@@ -111,20 +111,18 @@ export default function SketchArtists() {
           initial="hidden"
           animate={sectionControls}
         >
-          <div className="mt-16 text-center">
-            <h2 className="text-4xl font-bold mb-10">
-              Why Choose Our Sketch Artists?
-            </h2>
-            <ul className="list-inside text-lg text-justify-center max-w-2xl mx-auto ">
-              <li className="mb-2">Skilled artists with diverse styles</li>
-              <li className="mb-2">Quick, high-quality sketches in minutes</li>
-              <li className="mb-2">Personalized mementos for your guests</li>
-              <li className="mb-2">
-                Adds an interactive and entertaining element to your event
-              </li>
-              <li>Customizable to match your event theme</li>
-            </ul>
-          </div>
+          <h2 className="text-4xl font-bold mb-10">
+            Why Choose Our Sketch Artists?
+          </h2>
+          <ul className="list-inside text-lg text-justify-center max-w-2xl mx-auto ">
+            <li className="mb-2">Skilled artists with diverse styles</li>
+            <li className="mb-2">Quick, high-quality sketches in minutes</li>
+            <li className="mb-2">Personalized mementos for your guests</li>
+            <li className="mb-2">
+              Adds an interactive and entertaining element to your event
+            </li>
+            <li>Customizable to match your event theme</li>
+          </ul>
         </motion.div>
       </section>
     </div>
