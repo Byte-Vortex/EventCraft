@@ -57,15 +57,18 @@ export default function Gallery() {
               Event Gallery
             </h1>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-center"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-3">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-3 ">
+            
               {galleryItems.map((item, index) => (
-                <div key={index} className="relative group">
+                <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: index*0.3 }}
+                className="text-center"
+              >
+                <div key={index} className="relative group ">
                   <Image
                     src={item.src}
                     alt={item.alt}
@@ -82,9 +85,11 @@ export default function Gallery() {
                     </div>
                   </Link>
                 </div>
+                </motion.div>
+                
               ))}
-            </div>
-          </motion.div>
+            
+          </div>
         </div>
       </main>
     </div>
