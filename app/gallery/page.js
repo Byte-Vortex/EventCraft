@@ -63,9 +63,9 @@ export default function Gallery() {
               {galleryItems.map((item, index) => (
                 <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: index*0.3 }}
+                transition={{ duration: 0.7, delay: 0.3+index*0.3 }}
                 className="text-center"
               >
                 <div key={index} className="relative group ">
