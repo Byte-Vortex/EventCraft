@@ -34,7 +34,7 @@ export default function Navbar() {
 
   return (
     <nav className="top-0 sticky backdrop-blur selection:bg-transparent z-50 font-poppins text-white">
-      <div className="mx-auto px-4 py-2 flex  justify-between items-center">
+      <div className="mx-auto px-4 py-1 flex  justify-between items-center">
         <Link
           href="/"
           className="hidden font-dancingScript md:flex ml-10 text-3xl font-bold "
@@ -169,11 +169,11 @@ export default function Navbar() {
               </svg>
             </SheetTrigger>
             <SheetContent className="bg-background selection:bg-transparent ">
-              <SheetHeader className="flex justify-center mt-8 mb-2 items-center text-3xl">
+              <SheetHeader className="flex justify-center mt-10 items-center text-3xl">
                 <SheetTitle>
                   <SheetClose asChild>
                     <Link href="/">
-                      <span className="font-bold text-5xl bg-clip-text text-transparent font-dancingScript bg-gradient-to-b from-purple-400 to-pink-600 py-1 cursor-pointer">
+                      <span className="font-bold text-4xl bg-clip-text text-transparent font-dancingScript bg-gradient-to-b from-purple-400 to-pink-600 cursor-pointer">
                         EventCraft
                       </span>
                     </Link>
@@ -211,10 +211,8 @@ export default function Navbar() {
                   </SheetClose>
                 </Link>
               </div>
-
-              <div className="flex flex-col justify-center items-center py-2 mb-2 mt-6"></div>
               <SheetFooter>
-                <div className="mx-auto font-poppins mt-64 py-4 justify-center items-center">
+                <div className="mx-auto font-poppins mt-52 py-4 justify-center items-center">
                   <p className="text-sm justify-center text-center">
                     &copy; 2024 EventCraft. All rights reserved.
                   </p>
