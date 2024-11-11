@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -10,6 +10,8 @@ import { StarIcon } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const testimonials = [
   {
@@ -95,7 +97,7 @@ export function TestimonialCarousel() {
 
   return (
     <div className="bg-muted ">
-      <div className="py-10">
+      <div className="py-10 flex-col justify-center items-center">
         <motion.div
           ref={sectionRef}
           variants={sectionVariants}
@@ -126,7 +128,9 @@ export function TestimonialCarousel() {
                   <div className="p-1">
                     <Card className="bg-transparent shadow-neutral-950">
                       <CardContent className="flex flex-col items-center justify-center p-6">
-                        <p className="font-bold font-greatVibes text-3xl">{testimonial.name}</p>
+                        <p className="font-bold font-greatVibes text-3xl">
+                          {testimonial.name}
+                        </p>
                         <p className="text-base pt-2 font-semibold text-muted-foreground">
                           {testimonial.role}
                         </p>
@@ -153,6 +157,16 @@ export function TestimonialCarousel() {
               ))}
             </CarouselContent>
           </Carousel>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="text-center pt-5"
+        >
+          <Link href="/testimonials">
+            <Button className="font-bold text-sm rounded-sm">See More</Button>
+          </Link>
         </motion.div>
       </div>
     </div>
