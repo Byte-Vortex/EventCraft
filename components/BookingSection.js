@@ -141,20 +141,21 @@ export default function BookingSection() {
                       </div>
                       <div className="flex items-center space-x-2 ">
                         <Checkbox
-                          id="terms"
                           checked={acceptTerms}
                           onCheckedChange={() => {}} // Disable manual checkbox change
                           required
+                          className="pointer-events-none"
                         />
                         <Label htmlFor="terms" className="text-sm">
                           I Agree to the
                           <Dialog>
                             <DialogTrigger asChild>
                               <Button
+                                id="terms"
                                 variant="ghost"
                                 className="hover:bg-transparent text-primary hover:text-primary px-1"
                               >
-                                Terms of Service
+                                Terms of Service.
                               </Button>
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-[425px]">
@@ -174,7 +175,7 @@ export default function BookingSection() {
                               </ScrollArea>
                             </DialogContent>
                           </Dialog>
-                          &
+                          {/* &
                           <Button
                             variant="ghost"
                             className="hover:bg-transparent text-primary hover:text-primary px-1"
@@ -182,7 +183,7 @@ export default function BookingSection() {
                             <Link href="/policies/privacypolicy">
                               Privacy Policy
                             </Link>
-                          </Button>
+                          </Button> */}
                         </Label>
                       </div>
                       <div className="flex flex-col space-y-1.5">
