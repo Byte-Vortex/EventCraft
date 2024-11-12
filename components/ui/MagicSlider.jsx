@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Separator } from './separator';
-import { Slider } from './slider';
 
 // Extended slides array with title and description
 const slides = [
@@ -48,7 +47,6 @@ const slides = [
 
 export default function HeroSlider() {
     const [currentIndex, setCurrentIndex] = React.useState(0);
-    const totalSlides = slides.length; // Total number of slides
     const [touchStartX, setTouchStartX] = React.useState(0)
     const [touchEndX, setTouchEndX] = React.useState(0)
     const [isDragging, setIsDragging] = React.useState(false)
@@ -68,12 +66,6 @@ export default function HeroSlider() {
     const resetInterval = () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
         intervalRef.current = setInterval(nextSlide, 5000); // Restart the interval
-    };
-
-    // Go to a specific slide based on slider value
-    const goToSlide = (index) => {
-        setCurrentIndex(index);
-        resetInterval();
     };
 
     // Handle touch start
@@ -200,22 +192,6 @@ export default function HeroSlider() {
                             {slides[currentIndex].description}
                         </p>
                     </motion.div>
-                </div>
-                <div className="absolute px-2 space-x-4 md:mr-32 mr-14 inset-0 flex justify-end items-end mb-10 mx-auto pointer-events-none overflow-hidden">
-                    <div className="z-20 mr-3 overflow-hidden text-white ">
-                        <p className="text-sm">PREV</p>
-                    </div>
-                    <Slider
-                        value={[currentIndex]}
-                        max={totalSlides + 1} // `totalSlides` is the number of slides in your carousel
-                        step={1}
-                        onValueChange={(value) => goToSlide(value[0])} // Function to change slides based on slider value
-                        className="w-[20%] p-2  pointer-events-auto cursor-pointer"
-                    />
-                    <div className="ml-3 z-20 overflow-hidden text-white ">
-                        <p className="text-sm">NEXT</p>
-                    </div>
-
                 </div>
                 <div className="absolute px-2 inset-0 flex justify-start items-end md:ml-24 ml-6 mb-36 mx-auto pointer-events-none overflow-hidden">
 
