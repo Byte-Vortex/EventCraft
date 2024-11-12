@@ -105,16 +105,6 @@ export default function HeroSlider() {
     return () => clearInterval(slideInterval)
   }, [nextSlide])
 
-  // Keyboard navigation (left/right arrow keys)
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
-
   return (
     <>
       <section className="-mt-20 bg-gradient-to-b from-background to-background/80 selection:bg-transparent">
