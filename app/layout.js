@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Dancing_Script, Poppins,Meddon,Great_Vibes } from "next/font/google";
+import { Dancing_Script, Poppins,Meddon,Great_Vibes,Courgette } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
@@ -38,6 +38,12 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
+const courgette=Courgette({
+  variable:"--font-courgette",
+  weight: "400",
+  subsets: ["latin"],
+});
+
 const meddon = Meddon({
   variable: "--font-meddon",
   weight: ["400"],
@@ -61,7 +67,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.variable} ${greatVibes.variable} ${poppins.variable} ${meddon.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
+        className={`${dancingScript.variable} ${courgette.variable} ${greatVibes.variable} ${poppins.variable} ${meddon.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-transparent `}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

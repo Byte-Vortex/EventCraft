@@ -1,3 +1,5 @@
+const { Courgette } = require('next/font/google');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ["class"],
@@ -84,7 +86,8 @@ module.exports = {
 		geistMono: ['var(--font-geist-mono)'],
 		poppins:['var(--font-poppins)'],
 		meddon:['var(--font-meddon)'],
-		greatVibes:['var(--font-great-vibes)']
+		greatVibes:['var(--font-great-vibes)'],
+		courgette:['var(--font-courgette)']
 	  }
 	},
 	plugins: [

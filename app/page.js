@@ -6,6 +6,7 @@ import TextBanner from "@/components/ui/TextBanner";
 import { TestimonialCarousel } from "@/components/TestimonialsCarousel";
 import OurServicesSection from "@/components/OurServicesSection";
 import HeroSection from "@/components/ui/HeroSection";
+import MagicSlider from "@/components/ui/MagicSlider";
 
 export default function EventPlannerWebsite() {
   const bannerMessages = [
@@ -20,7 +21,8 @@ export default function EventPlannerWebsite() {
       <main>
         {/* Hero Section */}
         {/* <HeroSlider /> */}
-        <HeroSection/>
+        {/* <HeroSection/> */}
+        <MagicSlider/>
         {/* Our Services Section */}
         <OurServicesSection />
         {/*Booking Section*/}
