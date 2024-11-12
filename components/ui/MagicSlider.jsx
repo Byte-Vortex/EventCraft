@@ -47,6 +47,7 @@ const slides = [
 
 export default function HeroSlider() {
     const [currentIndex, setCurrentIndex] = React.useState(0);
+    const totalSlides = slides.length; // Total number of slides
     const [touchStartX, setTouchStartX] = React.useState(0)
     const [touchEndX, setTouchEndX] = React.useState(0)
     const [isDragging, setIsDragging] = React.useState(false)
@@ -176,11 +177,11 @@ export default function HeroSlider() {
                             ))}
                         </h1>
                     </motion.div>
-                    
+
 
                 </div>
                 <div className="absolute px-2 inset-2 flex items-center justify-start ml-7 md:ml-28 mt-28 md:mt-40 mx-auto pointer-events-none overflow-hidden">
-                <motion.div
+                    <motion.div
                         key={currentIndex} // Adding a key prop to re-render on slide change
                         initial={{ opacity: 0, x: +100 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -216,6 +217,27 @@ export default function HeroSlider() {
                         </Button>
                         <Separator className="ml-8 w-20 -mt-2 bg-foreground" />
 
+                    </motion.div>
+                </div>
+                <div className="absolute px-2 inset-0 flex justify-end items-end mr-8 md:mr-28 md:mb-16 mb-12 mx-auto pointer-events-none space-x-1 overflow-hidden">
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.7, delay: 0.5 }}
+                        className="flex space-x-1 items-center"
+                    >
+                        <motion.div
+                            key={currentIndex}
+                            initial={{ opacity: 0, x: 7 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 50 }}
+                            transition={{ duration: 0.5 }}
+
+                        >
+                            <p className="text-white text-2xl">
+                                {String(currentIndex + 1).padStart(2, '0')} </p>
+                        </motion.div>
+                        <p className="mb-2 text-xs">/ {String(totalSlides).padStart(2, '0')}</p>
                     </motion.div>
                 </div>
             </div>
