@@ -158,8 +158,8 @@ export default function BookingSection() {
                                 Terms of Service.
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="sm:max-w-[425px]">
-                              <DialogTitle className="text-center text-lg">
+                            <DialogContent className="w-4/5 rounded-md">
+                              <DialogTitle className="text-center text-lg -my-2">
                                 Acceptance of Terms
                               </DialogTitle>
                               <ScrollArea className="h-72 w-full">
