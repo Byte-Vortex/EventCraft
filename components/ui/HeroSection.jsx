@@ -171,7 +171,7 @@ export default function HeroSlider() {
                         transition={{ duration: 0.5 }}
                         className="text-left"
                     >
-                        <h1 className="text-6xl md:pr-0 pr-8 md:text-8xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600 px-2 py-3">
+                        <h1 className="text-6xl md:pr-0 pr-8 md:text-8xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-500 to-pink-700 px-2 py-3">
                             {slides[currentIndex].title.split('\n').map((line, index) => (
                                 <span key={index} className="block">{line}</span>
                             ))}
