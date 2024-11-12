@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import {
   Card,
@@ -14,6 +14,17 @@ import {
   SelectContent,
   SelectItem,
 } from "./ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 import { motion, useAnimation } from "framer-motion";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -21,19 +32,48 @@ import { DatePicker } from "./ui/datepicker";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "@/hooks/use-toast";
+import { Label } from "./ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
+import { Termsconditions } from "./Terms-conditions";
 
 export default function BookingSection() {
-    const formControls = useAnimation();
-    const [formRef, formInView] = useInView({ threshold: 0.2, triggerOnce: true });
-    useEffect(() => {
-      if (formInView) formControls.start('visible');
-    }, [formControls, formInView]);
-    const formVariants = {
-      hidden: { opacity: 0, y: -50 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    };
-  
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const router = useRouter();
+
+  const handleAccept = () => {
+    setAcceptTerms(true);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (acceptTerms) {
+      // Process payment logic here
+      console.log("Processing payment...");
+      router.push("/confirmation");
+    } else {
+      toast({
+        description: "Please accept the terms and conditions to proceed.",
+        duration: "2000",
+      });
+    }
+  };
+  const formControls = useAnimation();
+  const [formRef, formInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+  useEffect(() => {
+    if (formInView) formControls.start("visible");
+  }, [formControls, formInView]);
+  const formVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <div>
       {/* Booking Section */}
@@ -56,7 +96,7 @@ export default function BookingSection() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pb-5">
-                  <form noValidate>
+                  <form noValidate onSubmit={handleSubmit}>
                     <div className="grid w-full items-center gap-4">
                       <div className="flex flex-col space-y-1.5">
                         <Input
@@ -99,6 +139,52 @@ export default function BookingSection() {
                           placeholder="Additional Details"
                         />
                       </div>
+                      <div className="flex items-center space-x-2 ">
+                        <Checkbox
+                          id="terms"
+                          checked={acceptTerms}
+                          onCheckedChange={() => {}} // Disable manual checkbox change
+                          required
+                        />
+                        <Label htmlFor="terms" className="text-sm">
+                          I Agree to the
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                className="hover:bg-transparent text-primary hover:text-primary px-1"
+                              >
+                                Terms of Service
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[425px]">
+                              <DialogTitle className="text-center text-lg">
+                                Acceptance of Terms
+                              </DialogTitle>
+                              <ScrollArea className="h-72 w-full">
+                                <Termsconditions />
+                                <DialogClose>
+                                  <Button
+                                    className="justify-center items-center"
+                                    onClick={handleAccept}
+                                  >
+                                    Accept
+                                  </Button>
+                                </DialogClose>
+                              </ScrollArea>
+                            </DialogContent>
+                          </Dialog>
+                          &
+                          <Button
+                            variant="ghost"
+                            className="hover:bg-transparent text-primary hover:text-primary px-1"
+                          >
+                            <Link href="/policies/privacypolicy">
+                              Privacy Policy
+                            </Link>
+                          </Button>
+                        </Label>
+                      </div>
                       <div className="flex flex-col space-y-1.5">
                         <Button type="submit" className="w-full h-12">
                           <Send className="mr-2 h-8 w-4" /> Submit
@@ -106,13 +192,6 @@ export default function BookingSection() {
                       </div>
                     </div>
                   </form>
-                  <div className="flex flex-col mt-3">
-                    {status && (
-                      <p className="flex justify-center items-center text-pink-700">
-                        {status}
-                      </p>
-                    )}
-                  </div>
                 </CardContent>
               </Card>
             </div>
