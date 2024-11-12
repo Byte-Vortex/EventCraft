@@ -2,7 +2,7 @@ import React from "react";
 
 export const Termsconditions = () => {
   return (
-    <div className="grid gap-4 px-3">
+    <div className="grid gap-4 px-3 text-justify">
       <div className="max-w-3xl mx-auto text-muted-foreground py-2">
         <h2 className="text-xl font-semibold text-foreground mb-4"></h2>
         <p>
@@ -71,7 +71,7 @@ export const Termsconditions = () => {
           </ul>
         </div>
 
-        <p className="pt-2 font-semibold text-foreground/75">
+        <p className="pt-2">
           Please note that some bookings may have additional cancellation
           restrictions based on the specific event or vendor. These will be
           clearly outlined in the booking confirmation and cancellation.
@@ -100,7 +100,7 @@ export const Termsconditions = () => {
             comply with our cancellation policy.
           </li>
         </ul>
-        <p className="mt-8 mb-4">
+        <p className="mt-8 mb-4 text-foreground/75">
           If we need to cancel an event due to unforeseen circumstances or
           external factors, we will offer a full refund or an opportunity to
           reschedule the event, depending on user preference.
