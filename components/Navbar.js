@@ -25,9 +25,6 @@ export default function Navbar() {
   const NavStyle = cva(
     "text-base font-bold group inline-flex h-10 w-max items-center justify-center px-4 py-2 transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5  disabled:pointer-events-none disabled:opacity-50"
   );
-  const NavmdStyle = cva(
-    "text-base font-bold group inline-flex h-10 w-max items-center justify-center px-4 py-2 disabled:pointer-events-none disabled:opacity-50"
-  );
   const LinkStyle = cva(
     "  block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
   );
@@ -37,13 +34,13 @@ export default function Navbar() {
       <div className="mx-auto px-4 py-1 flex  justify-between items-center">
         <Link
           href="/"
-          className="hidden font-dancingScript md:flex ml-10 text-3xl font-bold "
+          className="hidden font-dancingScript md:flex ml-28 text-3xl font-bold "
         >
           EventCraft
         </Link>
         <Link
           href="/"
-          className="md:hidden font-dancingScript text-3xl font-bold"
+          className="md:hidden font-dancingScript ml-4 text-3xl font-bold"
         >
           EventCraft
         </Link>
@@ -56,7 +53,7 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link href="/services">
                   <NavigationMenuTrigger className="text-base font-bold transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5">
-                    Services
+                    SERVICES
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[450px] lg:grid-cols-[.75fr_1fr]">
@@ -128,7 +125,7 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link href="/packages" legacyBehavior passHref>
                   <NavigationMenuLink className={cn(NavStyle())}>
-                    Packages
+                    PACKAGES
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
