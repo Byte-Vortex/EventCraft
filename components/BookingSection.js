@@ -17,9 +17,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogClose,
   DialogTrigger,
@@ -37,8 +34,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
 import { Label } from "./ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import Link from "next/link";
 import { Termsconditions } from "./Terms-conditions";
+import Link from "next/link";
 
 export default function BookingSection() {
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -152,7 +149,7 @@ export default function BookingSection() {
                             <DialogTrigger asChild>
                               <Button
                                 id="terms"
-                                variant="ghost"
+                                variant="normal"
                                 className="hover:bg-transparent text-primary hover:text-primary px-1"
                               >
                                 Terms of Service.
@@ -175,15 +172,6 @@ export default function BookingSection() {
                               </ScrollArea>
                             </DialogContent>
                           </Dialog>
-                          {/* &
-                          <Button
-                            variant="ghost"
-                            className="hover:bg-transparent text-primary hover:text-primary px-1"
-                          >
-                            <Link href="/policies/privacypolicy">
-                              Privacy Policy
-                            </Link>
-                          </Button> */}
                         </Label>
                       </div>
                       <div className="flex flex-col space-y-1.5">
