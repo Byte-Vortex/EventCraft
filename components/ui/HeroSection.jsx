@@ -53,6 +53,7 @@ export default function HeroSlider() {
     const [isDragging, setIsDragging] = React.useState(false)
     const [mouseStartX, setMouseStartX] = React.useState(0)
     const [mouseEndX, setMouseEndX] = React.useState(0)
+    const intervalRef = React.useRef(null); // Ref to hold the interval
 
     const nextSlide = React.useCallback(() => {
         setCurrentIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
@@ -61,6 +62,12 @@ export default function HeroSlider() {
     const prevSlide = React.useCallback(() => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
     }, []);
+
+    // Function to reset the interval when a manual slide change occurs
+    const resetInterval = () => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        intervalRef.current = setInterval(nextSlide, 4000); // Restart the interval
+    };
 
     // Handle touch start
     const handleTouchStart = (e) => {
@@ -75,12 +82,13 @@ export default function HeroSlider() {
     // Handle touch end to determine swipe direction
     const handleTouchEnd = () => {
         if (touchStartX - touchEndX > 50) {
-            nextSlide() // Swiped left
+            resetInterval(); // Reset the interval on swipe
+            nextSlide();
+        } else if (touchStartX - touchEndX < -50) {
+            resetInterval(); // Reset the interval on swipe
+            prevSlide();
         }
-        if (touchStartX - touchEndX < -50) {
-            prevSlide() // Swiped right
-        }
-    }
+    };
 
     // Handle mouse down (start dragging)
     const handleMouseDown = (e) => {
@@ -99,13 +107,15 @@ export default function HeroSlider() {
     const handleMouseUp = () => {
         if (isDragging) {
             if (mouseStartX - mouseEndX > 50) {
-                nextSlide() // Dragged left
+                resetInterval(); // Reset the interval on drag
+                nextSlide();
             } else if (mouseStartX - mouseEndX < -50) {
-                prevSlide() // Dragged right
+                resetInterval(); // Reset the interval on drag
+                prevSlide();
             }
-            setIsDragging(false) // Stop dragging
+            setIsDragging(false);
         }
-    }
+    };
 
     // Cleanup event listeners for mouse up (in case the user moves out of the component)
     React.useEffect(() => {
@@ -115,8 +125,8 @@ export default function HeroSlider() {
     }, []);
 
     React.useEffect(() => {
-        const slideInterval = setInterval(nextSlide, 4000);
-        return () => clearInterval(slideInterval);
+        intervalRef.current = setInterval(nextSlide, 3000); // Set initial interval
+        return () => clearInterval(intervalRef.current); // Clear interval on unmount
     }, [nextSlide]);
 
     return (
@@ -219,7 +229,7 @@ export default function HeroSlider() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-center"
                 >
-                    <div className="absolute top-1/2 md:left-5 -left-1 z-20 cursor-pointer overflow-hidden text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={prevSlide}>
+                    <div className="absolute top-1/2 md:left-5 -left-1 z-20 cursor-pointer overflow-hidden text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={() => { resetInterval(); prevSlide(); }}>
                         <p className="text-lg font-semibold">Prev</p>
                     </div>
                 </motion.div>
@@ -229,7 +239,7 @@ export default function HeroSlider() {
                     transition={{ duration: 0.7, delay: 0.3 }}
                     className="text-center"
                 >
-                    <div className="absolute top-1/2 md:right-5 -right-1 cursor-pointer text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={nextSlide}>
+                    <div className="absolute top-1/2 md:right-5 -right-1 cursor-pointer text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={() => { resetInterval(); nextSlide(); }}>
                         <p className="text-lg font-semibold">Next</p>
                     </div>
                 </motion.div>
