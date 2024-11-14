@@ -36,7 +36,7 @@ const cardData = [
     content:
       "From high-tech VR experiences to classic party games, we have something for everyone to enjoy.",
     animationVariant: {
-      hidden: { opacity: 0, y: 50 },
+      hidden: { opacity: 0, y: -50 },
       visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     },
     link: "/services/games",
@@ -61,7 +61,11 @@ const DescriptionStyle = cva("text-center text-base ");
 // AnimatedCard Component
 const AnimatedCard = ({ card }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.4, triggerOnce: true });
+  const [ref, inView] = useInView({
+    threshold: 0.4,
+    triggerOnce: true,
+    delay: 0.5,
+  });
 
   useEffect(() => {
     if (inView) controls.start("visible");
@@ -98,27 +102,34 @@ const AnimatedCard = ({ card }) => {
 };
 
 export default function OurServicesSection() {
-      // Section Animation
+  // Section Animation
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 1, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.8, triggerOnce: true });
   useEffect(() => {
     if (inView) controls.start("visible");
   }, [controls, inView]);
 
   const titleVariants = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6,delay:0.7 } },
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
+
+  const TitleControls=useAnimation();
+  const [titleref,titleinView] = useInView({ threshold: 0.2, triggerOnce:true });
+  useEffect(() => {
+    if (titleinView) TitleControls.start("visible");
+  }, [TitleControls,titleinView]);
+  
   return (
     <div>
       {/* Our Services Section */}
       <section className="py-20 w-full">
         <div className="container mx-auto w-full px-7">
           <motion.div
-            ref={ref}
+            ref={titleref}
             variants={titleVariants}
             initial="hidden"
-            animate={controls}
+            animate={TitleControls}
           >
             <h2 className="text-4xl font-bold mb-12 text-center">
               Our Services
