@@ -132,7 +132,7 @@ export default function NewSlider() {
     return (
         <section className="-mt-16 bg-gradient-to-b from-background to-background/90 selection:bg-transparent">
             <div
-                className="relative h-[calc(102vh)] w-full overflow-hidden"
+                className="relative h-[calc(99vh)] w-full overflow-hidden"
             >
                 <div className="absolute inset-0 h-full w-full"
                     onTouchStart={handleTouchStart}
