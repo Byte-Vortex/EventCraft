@@ -130,35 +130,38 @@ export default function HeroSlider() {
     }, [nextSlide]);
 
     return (
-        <section className="-mt-20 bg-gradient-to-b from-background to-background/80 selection:bg-transparent">
+        <section className="-mt-20 bg-gradient-to-b from-background to-background/90 selection:bg-transparent">
             <div
                 className="relative h-[calc(90vh)] w-full overflow-hidden"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={() => setIsDragging(false)}
             >
-                {/* Slides */}
-                <div
-                    className="flex h-full w-full transition-transform duration-500 ease-out"
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                <div className="absolute inset-0 h-full w-full"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={() => setIsDragging(false)}
                 >
-                    {slides.map((slide, index) => (
-                        <div key={index} className="min-w-full h-full relative overflow-hidden bg-muted">
-                            <Image
-                                src={slide.url}
-                                alt={slide.alt}
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                style={{ objectFit: 'cover' }}
-                                priority={index === 0}
-                            />
-                            <div className="absolute inset-0 bg-black/50" />
-                        </div>
-                    ))}
+                    {/* Slides */}
+                    <div
+                        className="flex h-full w-full transition-transform duration-500 ease-out"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                        {slides.map((slide, index) => (
+                            <div key={index} className="min-w-full h-full relative overflow-hidden bg-muted">
+                                <Image
+                                    src={slide.url}
+                                    alt={slide.alt}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    style={{ objectFit: 'cover' }}
+                                    priority={index === 0}
+                                />
+                                <div className="absolute inset-0 bg-black/50" />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Dynamic Text Content */}
@@ -171,7 +174,7 @@ export default function HeroSlider() {
                         transition={{ duration: 0.5 }}
                         className="text-left"
                     >
-                        <h1 className="text-6xl md:pr-0 pr-8 md:text-8xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-500 to-pink-700 px-2 py-3">
+                        <h1 className="text-6xl md:pr-0 pr-8 md:text-8xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600 px-2 py-3">
                             {slides[currentIndex].title.split('\n').map((line, index) => (
                                 <span key={index} className="block">{line}</span>
                             ))}
@@ -182,18 +185,16 @@ export default function HeroSlider() {
                         </p>
 
                     </motion.div>
-
                 </div>
                 <div className="absolute px-2 inset-0 flex justify-start items-start ml-8 md:ml-28 md:mt-40 mt-36 mx-auto pointer-events-none space-x-1 overflow-hidden">
                     <motion.div
-                        key={currentIndex} // Adding a key prop to re-render on slide change
+                        key={currentIndex}
                         initial={{ opacity: 0, x: -5 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 50 }}
                         transition={{ duration: 0.5 }}
 
                     >
-
                         <p className="text-white text-2xl">
                             {String(currentIndex + 1).padStart(2, '0')} </p>
                     </motion.div>
@@ -223,24 +224,25 @@ export default function HeroSlider() {
                         <Separator className="ml-8 w-20 -mt-2 bg-foreground" />
                     </motion.div>
                 </div>
+
                 <motion.div
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="text-center"
                 >
                     <div className="absolute top-1/2 md:left-5 -left-1 z-20 cursor-pointer overflow-hidden text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={() => { resetInterval(); prevSlide(); }}>
-                        <p className="text-lg font-semibold">Prev</p>
+                        <p className="text-lg">Prev</p>
                     </div>
                 </motion.div>
                 <motion.div
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.3 }}
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
                     className="text-center"
                 >
                     <div className="absolute top-1/2 md:right-5 -right-1 cursor-pointer text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={() => { resetInterval(); nextSlide(); }}>
-                        <p className="text-lg font-semibold">Next</p>
+                        <p className="text-lg">Next</p>
                     </div>
                 </motion.div>
             </div>

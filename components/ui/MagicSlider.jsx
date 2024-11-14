@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Separator } from './separator';
+import { Slider } from './slider';
 
 // Extended slides array with title and description
 const slides = [
@@ -69,6 +70,11 @@ export default function HeroSlider() {
         intervalRef.current = setInterval(nextSlide, 5000); // Restart the interval
     };
 
+    const goToSlide = (index) => {
+        setCurrentIndex(index);
+        resetInterval();
+    };
+
     // Handle touch start
     const handleTouchStart = (e) => {
         setTouchStartX(e.touches[0].clientX);
@@ -131,58 +137,59 @@ export default function HeroSlider() {
 
     return (
         <section className="-mt-20 bg-gradient-to-b from-background to-background/80 selection:bg-transparent">
-            <div
-                className="relative h-[calc(90vh)] w-full overflow-hidden"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={() => setIsDragging(false)}
-            >
-                {/* Slides */}
+            <div className="relative h-[calc(90vh)] w-full overflow-hidden">
                 <div
-                    className="flex h-full w-full transition-transform duration-500 ease-out"
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    className="absolute inset-0 h-full w-full"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={() => setIsDragging(false)}
+
                 >
-                    {slides.map((slide, index) => (
-                        <div key={index} className="min-w-full h-full relative overflow-hidden bg-muted">
-                            <Image
-                                src={slide.url}
-                                alt={slide.alt}
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                style={{ objectFit: 'cover' }}
-                                priority={index === 0}
-                            />
-                            <div className="absolute inset-0 bg-black/50" />
-                        </div>
-                    ))}
+                    <div
+                        className="flex h-full w-full transition-transform duration-500 ease-out"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                        {slides.map((slide, index) => (
+                            <div key={index} className="min-w-full h-full relative overflow-hidden bg-muted">
+                                <Image
+                                    src={slide.url}
+                                    alt={slide.alt}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    style={{ objectFit: 'cover' }}
+                                    priority={index === 0}
+                                />
+                                <div className="absolute inset-0 bg-black/50" />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Dynamic Text Content */}
                 <div className="absolute px-2 inset-0 flex items-center justify-start -mt-32 ml-10 md:ml-28 mx-auto pointer-events-none overflow-hidden">
                     <motion.div
-                        key={currentIndex} // Adding a key prop to re-render on slide change
+                        key={currentIndex}
                         initial={{ opacity: 0, x: -100 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 50 }}
                         transition={{ duration: 0.5 }}
                         className="text-left"
                     >
-                        <h1 className="text-6xl md:pr-0 pr-8 md:text-8xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-500 to-pink-700 px-2 py-3">
+                        <h1 className="text-6xl md:pr-0 pr-8 md:text-8xl font-poppins font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-pink-600 px-2 py-3">
                             {slides[currentIndex].title.split('\n').map((line, index) => (
                                 <span key={index} className="block">{line}</span>
                             ))}
                         </h1>
                     </motion.div>
-
-
                 </div>
+
                 <div className="absolute px-2 inset-2 flex items-center justify-start ml-7 md:ml-28 mt-28 md:mt-40 mx-auto pointer-events-none overflow-hidden">
+
                     <motion.div
-                        key={currentIndex} // Adding a key prop to re-render on slide change
+                        key={currentIndex}
                         initial={{ opacity: 0, x: +100 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 50 }}
@@ -194,6 +201,7 @@ export default function HeroSlider() {
                         </p>
                     </motion.div>
                 </div>
+
                 <div className="absolute px-2 inset-0 flex justify-start items-end md:ml-24 ml-6 mb-36 mx-auto pointer-events-none overflow-hidden">
 
                     <motion.div
@@ -219,26 +227,21 @@ export default function HeroSlider() {
 
                     </motion.div>
                 </div>
-                <div className="absolute px-2 inset-0 flex justify-end items-end mr-8 md:mr-28 md:mb-16 mb-12 mx-auto pointer-events-none space-x-1 overflow-hidden">
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7, delay: 0.5 }}
-                        className="flex space-x-1 items-center"
-                    >
-                        <motion.div
-                            key={currentIndex}
-                            initial={{ opacity: 0, x: 7 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 50 }}
-                            transition={{ duration: 0.5 }}
 
-                        >
-                            <p className="text-white text-2xl">
-                                {String(currentIndex + 1).padStart(2, '0')} </p>
-                        </motion.div>
-                        <p className="mb-2 text-xs">/ {String(totalSlides).padStart(2, '0')}</p>
-                    </motion.div>
+                <div className="absolute px-2 space-x-4 md:mr-32 mr-14 inset-0 flex justify-end items-end mb-10 mx-auto pointer-events-none overflow-hidden">
+                    <div className="z-20 mr-3 pointer-events-auto cursor-pointer overflow-hidden text-white" onClick={() => { resetInterval(); prevSlide(); }}>
+                        <p className="text-sm">PREV</p>
+                    </div>
+                    <Slider
+                        value={[currentIndex]}
+                        max={totalSlides - 1}
+                        step={1}
+                        onValueChange={(value) => goToSlide(value[0])}
+                        className="w-[20%] p-2 pointer-events-auto cursor-pointer"
+                    />
+                    <div className="ml-3 z-20 overflow-hidden text-white pointer-events-auto cursor-pointer" onClick={() => { resetInterval(); nextSlide(); }}>
+                        <p className="text-sm">NEXT</p>
+                    </div>
                 </div>
             </div>
         </section>
