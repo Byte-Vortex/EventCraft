@@ -53,7 +53,7 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link href="/services">
                   <NavigationMenuTrigger className="text-base font-bold transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5">
-                    SERVICES
+                    Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[450px] lg:grid-cols-[.75fr_1fr]">
@@ -125,7 +125,7 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link href="/packages" legacyBehavior passHref>
                   <NavigationMenuLink className={cn(NavStyle())}>
-                    PACKAGES
+                    Packages
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
