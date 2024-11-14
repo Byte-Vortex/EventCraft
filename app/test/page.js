@@ -1,11 +1,20 @@
 import React from 'react'
+import Image from 'next/image'
+import { AspectRatio } from '@radix-ui/react-aspect-ratio'
 
 export default function page(){
   return (
     <div className='min-h-screen flex bg-red-300'>
-        <div className='bg-green-700 w-28 hover:backdrop-blur'></div>
-        <div className='bg-white w-full'></div>
-        <div className='bg-pink-600 w-28'></div>
+      <AspectRatio ratio={4/ 9} className="bg-muted">
+        <Image 
+        alt='nothing'
+        src="/6.jpg"
+        height={700}
+        width={700}
+        className=" w-full rounded-md object-cover"
+        />
+      </AspectRatio>
+
     </div>
   )
 };

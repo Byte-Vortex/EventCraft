@@ -45,6 +45,13 @@ export default function BookingSection() {
     setAcceptTerms(true);
   };
 
+  const toasttrigger=()=>{
+    if(!acceptTerms) {
+    toast({
+      description: "Please read and accept the terms and conditions to proceed.",
+    });}
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (acceptTerms) {
@@ -139,9 +146,11 @@ export default function BookingSection() {
                       <div className="flex items-center space-x-2 ">
                         <Checkbox
                           checked={acceptTerms}
-                          onCheckedChange={() => {}} // Disable manual checkbox change
+                          onClick={toasttrigger}
+                          onCheckedChange={() => {
+                            setAcceptTerms(false);
+                          }} // Disable manual checkbox change
                           required
-                          className="pointer-events-none"
                         />
                         <Label htmlFor="terms" className="text-sm">
                           I Agree to the

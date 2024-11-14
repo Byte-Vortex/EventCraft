@@ -79,20 +79,22 @@ const AnimatedCard = ({ card }) => {
     >
       <Card className="h-auto">
         <CardHeader>
-          <CardTitle className={cn(TitleStyle())}>{card.title}</CardTitle>
+          <CardTitle className={cn(TitleStyle())}><Link href={card.link}>{card.title}</Link></CardTitle>
           <CardDescription className={cn(DescriptionStyle())}>
             {card.description}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Link href={card.link}>
+          <div class="overflow-hidden h-48 rounded-md w-full md:w-1/2 lg:w-full mb-4">
             <Image
               src={card.imgSrc}
               alt={card.title}
               height="200"
               width="400"
-              className="w-full h-48 object-cover rounded-md mb-4"
+              className="w-full h-48 object-cover rounded-md transition-transform duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
             />
+            </div>
           </Link>
           <p className="text-muted-foreground">{card.content}</p>
         </CardContent>

@@ -1,4 +1,6 @@
 "use client";
+import BookingSection from "@/components/BookingSection";
+import FAQsection from "@/components/FAQsection";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,7 +17,7 @@ const packageData = [
     title: "Basic Package",
     description: "Perfect for small party/events",
     details: ["1 Tattoo Artist (3 hours)", "1 Sketch Artist (2 hours)"],
-    price: "Rs. 2,999",
+    price: "₹ 2,999",
     delay: 0.3,
     className: "p-4 rounded-2xl", // Custom class for Basic Package
   },
@@ -27,7 +29,7 @@ const packageData = [
       "2 Interactive Games",
       "2 Sketch Artists (3 hours)",
     ],
-    price: "Rs. 5,999",
+    price: "₹ 5,999",
     delay: 0.6,
     className: "p-4 md:mt-8 rounded-2xl", // Custom class for Premium Package
 
@@ -41,12 +43,19 @@ const packageData = [
       "3 Sketch Artists (4 hours)",
       "VIP experience add-ons",
     ],
-    price: "Rs. 8,999",
+    price: "₹ 8,999",
     delay: 0.9,
     className: "p-4 md:mt-16 rounded-2xl", // Custom class for Deluxe Package
 
   },
 ];
+
+const Book =()=>{
+  const bookingSection = document.getElementById('bookingsection');
+  if (bookingSection) {
+    bookingSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
 const PackageCard = ({
   title,
@@ -67,16 +76,16 @@ const PackageCard = ({
         <CardTitle className="text-3xl">{title}</CardTitle>
         <CardDescription className="text-base">{description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent >
         <ul className="list-inside text-sm space-y-2">
           {details.map((detail, index) => (
             <li key={index}>{detail}</li>
           ))}
         </ul>
-        <p className="mt-4 text-2xl font-bold">{price}</p>
+        <p className="font-geistMono mt-4 text-2xl font-bold">{price}</p>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full h-12">Book Now</Button>
+      <CardFooter className="items-center justify-center">
+        <Button className="w-2/3 lg:w-full h-11" onClick={Book}>Book Now</Button>
       </CardFooter>
     </Card>
   </motion.div>
@@ -98,7 +107,7 @@ export default function Packages() {
             </h1>
           </motion.div>
 
-          <div className="hidden md:flex">
+          <div className="hidden md:flex py-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-5 px-8">
               {packageData.map((pkg, index) => (
                 <PackageCard key={index} {...pkg} />
@@ -123,6 +132,8 @@ export default function Packages() {
           </div>
         </div>
       </main>
+      <BookingSection/>
+      <FAQsection/>
     </div>
   );
 }
