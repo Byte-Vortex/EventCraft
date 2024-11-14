@@ -51,7 +51,6 @@ export default function Navbar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/services">
                   <NavigationMenuTrigger className="text-base font-bold transition-transform duration-300 relative after:content-[''] after:absolute after:left-3 after:bottom-0 after:w-0 after:h-[2px] after:bg-foreground after:transition-all after:duration-500 hover:after:w-4/5">
                     Services
                   </NavigationMenuTrigger>
@@ -61,7 +60,7 @@ export default function Navbar() {
                         <NavigationMenuLink asChild>
                           <Link
                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/"
+                            href="/services"
                           >
                             <div className="mb-2 mt-4 text-lg font-medium">
                               Unique Event Experiences
@@ -120,7 +119,6 @@ export default function Navbar() {
                       </li>
                     </ul>
                   </NavigationMenuContent>
-                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/packages" legacyBehavior passHref>
