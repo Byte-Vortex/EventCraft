@@ -237,7 +237,7 @@ export default function HeroSlider() {
                         max={totalSlides - 1}
                         step={1}
                         onValueChange={(value) => goToSlide(value[0])}
-                        className="w-[20%] p-2 pointer-events-auto cursor-pointer"
+                        className="w-[20%] p-2 pointer-events-auto"
                     />
                     <div className="ml-3 z-20 overflow-hidden text-white pointer-events-auto cursor-pointer" onClick={() => { resetInterval(); nextSlide(); }}>
                         <p className="text-sm">NEXT</p>
