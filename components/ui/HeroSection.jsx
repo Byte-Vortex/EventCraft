@@ -186,7 +186,7 @@ export default function HeroSlider() {
 
                     </motion.div>
                 </div>
-                <div className="absolute px-2 inset-0 flex justify-start items-start ml-8 md:ml-28 md:mt-40 mt-36 mx-auto pointer-events-none space-x-1 overflow-hidden">
+                <div className="absolute px-2 inset-0 flex justify-start items-start ml-11 md:ml-32 md:mt-40 mt-36 mx-auto pointer-events-none space-x-1 overflow-hidden">
                     <motion.div
                         key={currentIndex}
                         initial={{ opacity: 0, x: -5 }}
