@@ -45,7 +45,7 @@ const slides = [
     }
 ];
 
-export default function HeroSlider() {
+export default function NewSlider() {
     const [currentIndex, setCurrentIndex] = React.useState(0);
     const totalSlides = slides.length; // Total number of slides
     const [touchStartX, setTouchStartX] = React.useState(0)
@@ -163,7 +163,6 @@ export default function HeroSlider() {
                         ))}
                     </div>
                 </div>
-
                 {/* Dynamic Text Content */}
                 <div className="absolute px-2 inset-0 flex items-center justify-start ml-10 md:ml-28 mx-auto pointer-events-none overflow-hidden">
                     <motion.div
@@ -186,6 +185,12 @@ export default function HeroSlider() {
 
                     </motion.div>
                 </div>
+                <motion.div
+                        initial={{ opacity: 0, x: 0 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 ,delay: 0.2}}
+                        className="text-left"
+                    >
                 <div className="absolute px-5 inset-0 flex justify-start items-start ml-11 md:ml-28 md:mt-40 mt-36 mx-auto pointer-events-none space-x-1 overflow-hidden">
                     <motion.div
                         key={currentIndex}
@@ -200,12 +205,13 @@ export default function HeroSlider() {
                     </motion.div>
                     <p className="mt-2 text-xs">/ {String(totalSlides).padStart(2, '0')}</p>
                 </div>
+                </motion.div>
                 <div className="absolute px-4 inset-0 flex justify-start items-end md:ml-20 ml-4 mb-32 mx-auto pointer-events-none overflow-hidden">
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.5 }}
+                        transition={{ duration: 0.7, delay: 0.7 }}
                         className="text-center"
                     >
                         <Button
@@ -228,7 +234,7 @@ export default function HeroSlider() {
                 <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
                     className="text-center"
                 >
                     <div className="absolute top-1/2 md:left-5 -left-1 z-20 cursor-pointer overflow-hidden text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={() => { resetInterval(); prevSlide(); }}>
@@ -238,7 +244,7 @@ export default function HeroSlider() {
                 <motion.div
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, delay: 0.2 }}
+                    transition={{ duration: 0.7, delay: 0.6 }}
                     className="text-center"
                 >
                     <div className="absolute top-1/2 md:right-5 -right-1 cursor-pointer text-white opacity-80 hover:opacity-100 transform -rotate-90" onClick={() => { resetInterval(); nextSlide(); }}>
