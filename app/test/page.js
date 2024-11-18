@@ -14,8 +14,6 @@ export default function page(){
         className=" w-full rounded-md object-cover"
         />
       </AspectRatio>
-      <h1>Hello</h1>
-
     </div>
   )
 };
