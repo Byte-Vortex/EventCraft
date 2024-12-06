@@ -23,9 +23,9 @@ export default function EventPlannerWebsite() {
         {/* <HeroSlider /> */}
 
         {/* <HeroSection/> */}
-        <NewSlider/>
+        {/* <NewSlider/>   */}
 
-        {/* <MagicSlider/> */}
+         <MagicSlider/> 
 
         <OurServicesSection /> 
 
