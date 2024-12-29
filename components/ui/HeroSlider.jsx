@@ -133,7 +133,7 @@ export default function HeroSlider() {
                   style={{ objectFit: 'cover' }}
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-black/50">
+                <div className="absolute inset-0 bg-black/50"/>
               </div>
             ))}
           </div>
